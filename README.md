@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/takuminnnn/sample_app.svg?branch=static-pages)](https://travis-ci.org/takuminnnn/sample_app)
+
 == README
 
 This README would normally document whatever steps are necessary to get the
