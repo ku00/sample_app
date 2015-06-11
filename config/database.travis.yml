@@ -1,4 +1,8 @@
+default: &default
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+
 test:
-  adapter: postgresql
-  database: travis_ci_test
-  username: postgres</pre>
+  <<: *default
+  database: db/travis_ci_test.sqlite3
