@@ -6,8 +6,8 @@ class Exercise4
 end
 
 # Exercise4-2
-class String
-  def shuffle
-    self.split('').shuffle.join
-  end
-end
+# class String
+#   def shuffle
+#     self.split('').shuffle.join
+#   end
+# end
