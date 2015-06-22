@@ -28,4 +28,12 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     get users_path
     assert_select 'a', text: 'delete', count: 0
   end
+
+  test "index including only activated users" do
+    @non_admin.toggle!(:activated)
+    log_in_as(@admin)
+    get users_path
+    assert_select 'a[href=?]', user_path(@admin), text: @admin.name
+    assert_select 'a[href=?]', user_path(@non_admin), text: @non_admin.name, count: 0
+  end
 end
