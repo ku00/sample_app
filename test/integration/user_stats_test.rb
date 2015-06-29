@@ -6,7 +6,7 @@ class UserStatsTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
   end
 
-  test "stas display" do
+  test "stats display" do
     get user_path(@user)
     assert_select "a[href=?]", following_user_path(@user)
     assert_select "#following", text: "#{@user.following.count}"
