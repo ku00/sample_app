@@ -8,6 +8,7 @@ class UserStatsTest < ActionDispatch::IntegrationTest
 
   test "stats display" do
     get user_path(@user)
+    assert_template 'users/show'
     assert_select "a[href=?]", following_user_path(@user)
     assert_select "#following", text: "#{@user.following.count}"
     assert_select "a[href=?]", followers_user_path(@user)
