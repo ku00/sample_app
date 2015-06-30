@@ -16,6 +16,7 @@ gem 'mini_magick',             '3.8.0'
 gem 'fog',                     '1.23.0'
 gem 'will_paginate',           '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
+gem 'haml-rails',              '~> 0.9'
 
 group :development, :test do
   gem 'sqlite3',      '1.3.9'
@@ -28,6 +29,10 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
   gem 'minitest-line'
+end
+
+group :development do
+  gem 'erb2haml'
 end
 
 group :test do
