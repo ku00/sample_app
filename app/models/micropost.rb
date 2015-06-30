@@ -1,7 +1,13 @@
 class Micropost < ActiveRecord::Base
   belongs_to :user
   mount_uploader :picture, PictureUploader
-
+  has_many :active_reply_reactions,
+    class_name:  "Reaction",
+    foreign_key: "from_micropost_id",
+    dependent:   :destroy
+  has_many :replying,
+    through: :active_reply_reactions,
+    source:  :to_micropost
   validates :user_id,
     presence: true
   validates :content,

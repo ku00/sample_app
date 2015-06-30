@@ -28,4 +28,14 @@ class MicropostTest < ActiveSupport::TestCase
   test "order should be most recent first" do
     assert_equal microposts(:most_recent), Micropost.first
   end
+
+  test "should replied to the micropost" do
+    orange = microposts(:orange)
+    ants   = microposts(:ants)
+    assert_not orange.replied_to?(ants)
+    # replyを作成
+    assert orange.replied_to?(ants)
+    # replyを削除(解除ではなく削除)
+    assert_not orange.replied_to?(ants)
+  end
 end
