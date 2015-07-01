@@ -104,6 +104,13 @@ class User < ActiveRecord::Base
                     OR user_id = :user_id", user_id: id)
   end
 
+  def replied_from_all
+    replied_from_ids = microposts.map do |post|
+      post.replied_from_ids
+    end.flatten
+    Micropost.where("id IN (?)", replied_from_ids)
+  end
+
   # Follows a user.
   def follow(other_user)
    active_relationships.create(followed_id: other_user.id)
