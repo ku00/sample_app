@@ -29,13 +29,12 @@ class MicropostTest < ActiveSupport::TestCase
     assert_equal microposts(:most_recent), Micropost.first
   end
 
-  test "should replied to the micropost" do
+  test "should reply to the micropost" do
     orange = microposts(:orange)
     ants   = microposts(:ants)
     assert_not orange.replied_to?(ants)
-    # replyを作成
+    assert orange.reply_to(ants)
     assert orange.replied_to?(ants)
-    # replyを削除(解除ではなく削除)
-    assert_not orange.replied_to?(ants)
+    assert ants.replied_from.include?(orange)
   end
 end
