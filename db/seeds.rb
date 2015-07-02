@@ -1,5 +1,6 @@
 # Users
 User.create!(name:  "Example User",
+             user_name: "Example",
              email: "example@railstutorial.org",
              password:              "foobar",
              password_confirmation: "foobar",
@@ -9,9 +10,11 @@ User.create!(name:  "Example User",
 
 99.times do |n|
   name  = Faker::Name.name
+  user_name = name.split.first
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
   User.create!(name:  name,
+               user_name: user_name,
                email: email,
                password:              password,
                password_confirmation: password,
