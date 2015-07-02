@@ -22,7 +22,9 @@ class User < ActiveRecord::Base
   validates :name,
     presence: true,
     length: { maximum: 50}
-
+  validates :user_name,
+    presence: true,
+    length: { maximum: 30}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email,
    presence: true,
@@ -102,6 +104,13 @@ class User < ActiveRecord::Base
                     WHERE follower_id = :user_id"
     Micropost.where("user_id IN (#{following_ids})
                     OR user_id = :user_id", user_id: id)
+  end
+
+  def replied_from_all
+    replied_from_ids = microposts.map do |post|
+      post.replied_from_ids
+    end.flatten
+    Micropost.where("id IN (?)", replied_from_ids)
   end
 
   # Follows a user.

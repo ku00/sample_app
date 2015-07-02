@@ -1,0 +1,16 @@
+- provide(:title, @title)
+.row
+  %aside.col-md-4
+    %section.user_info
+      %h1
+        = gravatar_for @user
+        = @user.name
+    %section.stats
+      = render 'shared/stats'
+  .col-md-8
+    - if @reply_posts.any?
+      %h3
+        Replies (#{@reply_posts.count})
+      %ol.microposts
+        = render @reply_posts
+      = will_paginate @reply_posts
