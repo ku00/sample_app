@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150702052714) do
+ActiveRecord::Schema.define(version: 20150702085658) do
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
@@ -63,5 +63,6 @@ ActiveRecord::Schema.define(version: 20150702052714) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["user_name"], name: "index_users_on_user_name", unique: true
 
 end
