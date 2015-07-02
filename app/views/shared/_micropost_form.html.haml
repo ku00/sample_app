@@ -1,7 +1,7 @@
 = form_for(@micropost, html: { multipart: true }) do |f|
   = render 'shared/error_messages', object: f.object
   .field
-    = hidden_field_tag :reply_to_post_id, "test_post_reply_id"
+    = hidden_field_tag :reply_to_post_id, ""
     = f.text_area :content, placeholder: "Compose new micropost..."
   = f.submit "Post", class: "btn btn-primary"
   %span.picture
