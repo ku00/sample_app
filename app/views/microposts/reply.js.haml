@@ -1,0 +1,3 @@
+$("#reply_to_post_id").val('#{@micropost.id}');
+var form = $("#micropost_content")
+form.val( form.val() + " @#{@micropost.user.user_name}: " );
