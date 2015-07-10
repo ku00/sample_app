@@ -24,3 +24,5 @@ vendor/bundle
 
 # Ignore uploaded test images.
 /public/uploads
+
+server.csr
